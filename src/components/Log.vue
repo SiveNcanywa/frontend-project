@@ -18,38 +18,38 @@
 		<div class="login-form">
 			<div class="sign-in-htm">
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<label  class="label">Username</label>
+					<input  type="text" class="input">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<label class="label">Password</label>
+					<input  type="password" class="input" >
 				</div>
 				
 				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+					<input type="submit" class="button" >
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">Dont have an account?</a>
+					<label for="tab-2">Dont have an account?</label>
 				</div>
 			</div>
 			<div class="sign-up-htm">
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<label class="label">Username</label>
+					<input  type="text" class="input">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<label  class="label">Password</label>
+					<input  type="password" class="input" >
 				</div>
 				
 				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
+					<label  class="label">Email Address</label>
+					<input  type="text" class="input">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
+					<input type="submit" class="button" >
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -110,7 +110,7 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in,
 .login-html .sign-up,
 .login-form .group .check{
-	display:none;
+display: none;
 }
 .login-html .tab,
 .login-form .group .label,
@@ -143,7 +143,7 @@ a{color:inherit;text-decoration:none}
 .login-form .group .input,
 .login-form .group .button{
 	width:100%;
-	color:#fff;
+	color:black;
 	display:block;
 }
 .login-form .group .input,

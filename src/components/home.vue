@@ -4,13 +4,13 @@
     <span class="navbar-brand mb-0 h1">GABS<i class="fas fa-bus"></i></span>
     <ul class="nav nav-pills justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <a class="nav-link active" aria-current="page" href="#home">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="#about">About</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Contact</a>
+    <a class="nav-link" href="#contact">Contact</a>
   </li>
   
 </ul>
@@ -42,14 +42,14 @@ export default {
 <style>
 .buttons{
   position: relative;
-  left: -24%;
+  left: 20%;
 }
 .heading{
     font-family: muli,sans-serif;
     font-size: 70px;
     font-weight: 700;
     position: relative;
-    left: -25%;
+    left: 6%;
     margin-top: 15%;
 }
 .slogan{
