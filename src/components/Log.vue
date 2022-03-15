@@ -63,8 +63,39 @@
 
 <script>
 export default {
+ data(){
+    return{
+      
+      email:"",
+      password:"",
+    };
+  },
+  methods:{
+    login(){
+      fetch("",{
+        method:"POST",
+        body:JSON.stringify({
+          username:this.username,
+          password:this.password
+        }),
+        headers:{
+           "Content-type":"application/json;charset=UTF-8",
+        },
+      })
+      .then((response)=>response.json())
+      .then((json)=>{
+        console.log(json);
+        alert("User logged in");
+        localStorage.setItem("jwt",json.jwt);
+        this.$router.push({name:"Products"})
+      })
+      .catch((err)=>{
+        alert(err);
+      });
+    },
+  },
+};
 
-}
 </script>
 
 <style scoped>

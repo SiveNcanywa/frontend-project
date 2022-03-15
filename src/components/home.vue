@@ -20,13 +20,10 @@
 <h4 class="slogan">The Bus for us</h4>
 <div class="buttons">
  <router-link :to="{name:'Log'}"><button>
-      Sign In
+      Sign In/Up
       <span></span><span></span><span></span><span></span>
     </button></router-link>
-     <button>
-      Sign Up
-      <span></span><span></span><span></span><span></span>
-    </button>
+     
     </div>
 <div class="logo">
     <img src="https://i.postimg.cc/BnHD34YM/front-removebg-preview.png" alt="logo">
