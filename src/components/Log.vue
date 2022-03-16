@@ -16,14 +16,14 @@
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
-			<div class="sign-in-htm">
+			<div @submit.prevent="login" class="sign-in-htm" >
 				<div class="group">
 					<label  class="label">Username</label>
-					<input  type="text" class="input">
+					<input  type="text" class="input" v-model="username" >
 				</div>
 				<div class="group">
 					<label class="label">Password</label>
-					<input  type="password" class="input" >
+					<input  type="password" class="input" v-model="password"  >
 				</div>
 				
 				<div class="group">
@@ -34,22 +34,26 @@
 					<label for="tab-2">Dont have an account?</label>
 				</div>
 			</div>
-			<div class="sign-up-htm">
+			<div  @submit.prevent="register" class="sign-up-htm">
 				<div class="group">
 					<label class="label">Username</label>
-					<input  type="text" class="input">
+					<input  type="text" class="input" v-model="username">
 				</div>
 				<div class="group">
 					<label  class="label">Password</label>
-					<input  type="password" class="input" >
+					<input  type="password" class="input" v-model="password" >
+				</div>
+				<div class="group">
+					<label  class="label">Phone Number</label>
+					<input  type="text" class="input" v-model="phone_number">
 				</div>
 				
 				<div class="group">
 					<label  class="label">Email Address</label>
-					<input  type="text" class="input">
+					<input  type="text" class="input" v-model="email">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" >
+					<input type="submit" class="button" onclick=""  >
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -65,14 +69,19 @@
 export default {
  data(){
     return{
-      
       email:"",
       password:"",
-    };
+    },
+	{
+      fullname:"",
+      email:"",
+      phone_number:"",
+      password:"",
+    }
   },
   methods:{
     login(){
-      fetch("",{
+      fetch("https://sive-ticketing.herokuapp.com/signin",{
         method:"POST",
         body:JSON.stringify({
           username:this.username,
@@ -88,6 +97,33 @@ export default {
         alert("User logged in");
         localStorage.setItem("jwt",json.jwt);
         this.$router.push({name:"Products"})
+      })
+      .catch((err)=>{
+        alert(err);
+      });
+    },
+  },
+   methods:{
+    register(){
+      console.log(this.password);
+      fetch("https://sive-ticketing.herokuapp.com/signup",{
+        method:"POST",
+        body:JSON.stringify({
+          username:this.username,
+          email:this.email,
+        phone_number:this.phone_number,
+        password:this.password,
+        }),
+        headers:{
+          "Content-type":"application/json;charset=UTF-8",
+        },
+      })
+      .then((response)=>response.json())
+      .then((json)=>{
+        console.log(json);
+        alert("User registered");
+        localStorage.setItem("jwt",json.jwt);
+        this.$router.push({name:"Products"});
       })
       .catch((err)=>{
         alert(err);
@@ -124,7 +160,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	height:105%;
 	position:absolute;
-	padding:90px 70px 50px 70px;
+	padding:62px 70px 50px 70px;
 	background:rgba(66, 129, 37, 0.9);
 }
 .login-html .sign-in-htm,
