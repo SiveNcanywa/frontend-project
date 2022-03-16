@@ -103,7 +103,7 @@ export default {
       });
     },
   },
-   methods:{
+   
     register(){
       console.log(this.password);
       fetch("https://sive-ticketing.herokuapp.com/signup",{
@@ -129,8 +129,8 @@ export default {
         alert(err);
       });
     },
-  },
-};
+  };
+
 
 </script>
 

@@ -22,23 +22,23 @@
                 <h1 id="register">Survey Form</h1>
                 <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span> <span class="step"><i class="fa fa-map-marker"></i></span> <span class="step"><i class="fa fa-shopping-bag"></i></span> <span class="step"><i class="fa fa-car"></i></span> <span class="step"><i class="fa fa-spotify"></i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
                 <div class="tab">
-                    <h6>What's your name?</h6>
+                    <h6>Departure Station</h6>
                     <p> <input placeholder="Name..." oninput="this.className = ''" name="fname"></p>
                 </div>
                 <div class="tab">
-                    <h6>What's your city?</h6>
+                    <h6>Arrival Station</h6>
                     <p><input placeholder="City" oninput="this.className = ''" name="dd"></p>
                 </div>
                 <div class="tab">
-                    <h6>What's your Favourite Shopping site?</h6>
+                    <h6>Would you like a monthly or weekly ticket?</h6>
                     <p><input placeholder="Favourite Shopping site" oninput="this.className = ''" name="email"></p>
                 </div>
                 <div class="tab">
-                    <h6>What's your Favourite car?</h6>
+                    <h6>Enter your Gold Card number:</h6>
                     <p><input placeholder="Favourite car" oninput="this.className = ''" name="uname"></p>
                 </div>
                 <div class="tab">
-                    <h6>What's your Favourite Song?</h6>
+                    <h6>Payment</h6>
                     <p><input placeholder="Favourite Song" oninput="this.className = ''" name="uname"></p>
                 </div>
                 <div class="tab">
@@ -46,7 +46,7 @@
                     <p><input placeholder="Favourite Mobile Brand" oninput="this.className = ''" name="uname"></p>
                 </div>
                 <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-                    <h3>Thankyou for your feedback!</h3> <span>Thanks for your valuable information. It helps us to improve our services!</span>
+                    <h3>Thankyou for using GABS!</h3> <span>You will recieve an email next few minutes to confirm your ticket purchase</span>
                 </div>
                 <div style="overflow:auto;" id="nextprevious">
                     <div style="float:right;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button> </div>
