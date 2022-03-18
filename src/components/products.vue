@@ -15,205 +15,259 @@
       </ul>
     </div>
   </nav>
-  <div class="container mt-5">
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-            <form id="regForm">
-                <h1 id="register">Survey Form</h1>
-                <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span> <span class="step"><i class="fa fa-map-marker"></i></span> <span class="step"><i class="fa fa-shopping-bag"></i></span> <span class="step"><i class="fa fa-car"></i></span> <span class="step"><i class="fa fa-spotify"></i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
-                <div class="tab">
-                    <h6>Departure Station</h6>
-                    <p> <input placeholder="Name..." oninput="this.className = ''" name="fname"></p>
-                </div>
-                <div class="tab">
-                    <h6>Arrival Station</h6>
-                    <p><input placeholder="City" oninput="this.className = ''" name="dd"></p>
-                </div>
-                <div class="tab">
-                    <h6>Would you like a monthly or weekly ticket?</h6>
-                    <p><input placeholder="Favourite Shopping site" oninput="this.className = ''" name="email"></p>
-                </div>
-                <div class="tab">
-                    <h6>Enter your Gold Card number:</h6>
-                    <p><input placeholder="Favourite car" oninput="this.className = ''" name="uname"></p>
-                </div>
-                <div class="tab">
-                    <h6>Payment</h6>
-                    <p><input placeholder="Favourite Song" oninput="this.className = ''" name="uname"></p>
-                </div>
-                <div class="tab">
-                    <h6>What's your Favourite Mobile brand?</h6>
-                    <p><input placeholder="Favourite Mobile Brand" oninput="this.className = ''" name="uname"></p>
-                </div>
-                <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-                    <h3>Thankyou for using GABS!</h3> <span>You will recieve an email next few minutes to confirm your ticket purchase</span>
-                </div>
-                <div style="overflow:auto;" id="nextprevious">
-                    <div style="float:right;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button> </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+  <div id="products">
+<form>
+  <input id="input-1" type="text"  required autofocus />
+  <label for="input-1">
+    <span class="label-text">Departure Station</span>
+    <span class="nav-dot"></span>
+    <div class="signup-button-trigger">Load your Gold Card</div>
+  </label>
+  <input id="input-2" type="text"  required />
+  <label for="input-2">
+    <span class="label-text">Arrival Station</span>
+    <span class="nav-dot"></span>
+  </label>
+  <input id="input-3" type="email"  required />
+  <label for="input-3">
+    <span class="label-text">Duration?</span>
+    <span class="nav-dot"></span>
+  </label>
+  <input id="input-4" type="text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required />
+  <label for="input-4">
+    <span class="label-text">Enter your Gold Card number</span>
+    <span class="nav-dot"></span>
+  </label>
+  <input id="input-5" type="text"  required />
+  <label for="input-5">
+    <span class="label-text">Payment</span>
+    <span class="nav-dot"></span>
+  </label>
+  <button type="submit">Create Your Account</button>
+  <p class="tip">Press Tab</p>
+  <div class="signup-button">Load your Gold Card Ticket</div>
+</form>
+  </div>
+  
 </template>
 
 <script>
 export default {
-  data() {
-    return{
-      currentTab: 0
-    }
-  },
-  methods:{
-    showTab(n) {
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
-      } else {
-        document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
-      }
-      fixStepIndicator(n)
-    },
-    nextPrev(n) {
-      var x = document.getElementsByClassName("tab");
-      if (n == 1 && !validateForm()) return false;
-      x[currentTab].style.display = "none";
-      currentTab = currentTab + n;
-      if (currentTab >= x.length) {
-
-        document.getElementById("nextprevious").style.display = "none";
-        document.getElementById("all-steps").style.display = "none";
-        document.getElementById("register").style.display = "none";
-        document.getElementById("text-message").style.display = "block";
-
-
-
-
-      }
-      showTab(currentTab);
-    },
-    validateForm() {
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  for (i = 0; i < y.length; i++) { if (y[i].value=="" ) { y[i].className +=" invalid" ; valid=false; } } if (valid) { document.getElementsByClassName("step")[currentTab].className +=" finish" ; } return valid;
- },
- fixStepIndicator(n) { var i, x=document.getElementsByClassName("step"); for (i=0; i < x.length; i++) { x[i].className=x[i].className.replace(" active", "" ); } x[n].className +=" active" ; }
-  }
+ 
 
 }
 </script>
 
 <style scoped>
-#regForm {
-    background-color: #ffffff;
-    margin: 0px auto;
-    font-family: Raleway;
-    padding: 40px;
-    border-radius: 10px
+#products{
+ height: 100vh;
+ width: 100%;
+ background-color: goldenrod;
 }
-
-#register {
-    color: #6A1B9A
-}
-
-h1 {
-    text-align: center
+input,
+button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -300%);
+  display: block;
+  width: 70vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
 }
 
 input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-    border-radius: 10px;
-    -webkit-appearance: none
+  padding: 0.25rem 0;
+  border: 0;
+  border-bottom: 1px solid white;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: 0.125rem;
+  transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
 }
 
-.tab input:focus {
-    border: 1px solid #6a1b9a !important;
-    outline: none
+input::-moz-selection {
+  background: rgba(187, 21, 21, 0.25);
 }
 
-input.invalid {
-    border: 1px solid #e03a0666
+input::selection {
+  background: rgba(187, 21, 21, 0.25);
 }
 
-.tab {
-    display: none
+button,
+.signup-button {
+  padding: 0.25em 0;
+  border: 0;
+  outline: 0;
+  background: white;
+  color: #3A9430;
+  font-size: 2rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.0625rem;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -2px 0 rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-button {
-    background-color: #6A1B9A;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer
-}
-
-button:hover {
-    opacity: 0.8
-}
-
+input:focus,
 button:focus {
-    outline: none !important
+  opacity: 1;
+  transform: translate(-50%, -100%);
+  pointer-events: auto;
+  transition: all 0.4s cubic-bezier(0.1, 0.45, 0.1, 0.85) 0.5s;
+  z-index: 10;
 }
 
-#prevBtn {
-    background-color: #bbbbbb
+input:focus ~ input,
+input:focus ~ button {
+  transform: translate(-50%, 500%);
+  transition: all 0.5s ease-in;
 }
 
-.all-steps {
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 100%;
-    display: inline-flex;
-    justify-content: center
+input:focus ~ label .label-text {
+  transform: translate(-50%, 300%);
+  transition: all 0.5s ease-in;
 }
 
-.step {
-    height: 40px;
-    width: 40px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    color: #6a1b9a;
-    opacity: 0.5
+input:focus ~ .tip {
+  opacity: 1;
 }
 
-.step.active {
-    opacity: 1
+input:focus ~ .signup-button,
+button:focus ~ .signup-button {
+  opacity: 0;
 }
 
-.step.finish {
-    color: #fff;
-    background: #6a1b9a;
-    opacity: 1
+input:focus + label .label-text {
+  opacity: 1;
+  transform: translate(-50%, -100%);
+  transition: all 0.3s cubic-bezier(0.1, 0.45, 0.1, 0.85) 0.4s;
 }
 
-.all-steps {
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px
+input:focus + label .nav-dot:before {
+  background: white;
+  box-shadow: 0 0 0 0.15rem #111, 0 0 0.05rem 0.26rem #3A9430;
 }
 
-.thanks-message {
-    display: none
+.tip {
+  position: fixed;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  opacity: 0;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  text-align: right;
+  transition: opacity 0.25s 0.5s;
+}
+
+.signup-button,
+.signup-button-trigger {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 70vw;
+  padding: 0.25rem 0;
+  line-height: 3.6rem;
+  text-align: center;
+  pointer-events: none;
+  cursor: pointer;
+  transition: opacity 0.4s 0.3s;
+}
+
+.signup-button-trigger {
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.label-text {
+  position: fixed;
+  top: calc(50% - 4rem);
+  left: 50%;
+  transform: translate(-50%, -300%);
+  width: 70vw;
+  padding: 3.125rem 0 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.125rem;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0.25, 0.8, 0.3) 0.05s;
+}
+
+.nav-dot {
+  cursor: pointer;
+  position: fixed;
+  padding: 0.625rem 1.25rem 0.625rem 0.625rem;
+  top: 52%;
+  right: 1.25rem;
+}
+.nav-dot:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-right: 0.625rem;
+  position: fixed;
+  background-color: #16272f;
+  border: 0;
+  transition: all 0.25s;
+}
+.nav-dot:hover:before {
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-top: -0.125rem;
+  margin-left: -0.125rem;
+  background-color:white;
+}
+
+label[for=input-1] .nav-dot {
+  margin-top: -125px;
+}
+
+label[for=input-2] .nav-dot {
+  margin-top: -100px;
+}
+
+label[for=input-3] .nav-dot {
+  margin-top: -75px;
+}
+
+label[for=input-4] .nav-dot {
+  margin-top: -50px;
+}
+
+label[for=input-5] .nav-dot {
+  margin-top: -25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, #111E25 0%, #111 100%);
+  font-family: "Lato", sans-serif;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

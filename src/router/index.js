@@ -3,6 +3,7 @@ import home from '../components/home.vue'
 import log from '../components/Log.vue'
 import about from '../components/about.vue'
 import contact from '../components/contact.vue'
+import products from '../components/products.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     name: 'contact',
     component: ()=>import('../components/contact.vue')
   },
+  {
+    path: '/products',
+    name: 'products',
+    component: ()=>import('../components/products.vue')
+  }
 ]
 
 const router = createRouter({
