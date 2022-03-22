@@ -16,11 +16,11 @@
     </div>
   </nav>
   <div class="container emp-profile">
-            <form method="post">
+            <form >
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -30,7 +30,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Kshiti Ghelani
+                                        {{name}}
                                     </h5>
                                     <h6>
                                         Passenger
@@ -45,7 +45,28 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="username" placeholder="New Username">
+        <input type="text" name="email address" placeholder="New Email address">
+        <input type="text" name="phone_number" placeholder="New Phone_number">
+        <input type="text" name="password" placeholder="New Password">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -60,7 +81,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p>{{id}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -68,7 +89,7 @@
                                                 <label>Username</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p>{{username}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -76,7 +97,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <p>{{email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -84,7 +105,7 @@
                                                 <label>Phone_number</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{phone_number}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -92,58 +113,11 @@
                                                 <label>Password</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p>*********</p>
                                             </div>
                                         </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -153,7 +127,19 @@
 
 <script>
 export default {
+data(){
+    return{
+        id:localStorage.getItem("id"),
+        username:localStorage.getItem("username"),
+        email:localStorage.getItem("email"),
+        phone_number:localStorage.getItem("phone_number"),
+        password:localStorage.getItem("password")
+        
+        
 
+        
+    }
+}
 }
 </script>
 
@@ -171,6 +157,9 @@ export default {
 .profile-img img{
     width: 70%;
     height: 100%;
+}
+.btn {
+    background-color:rgba(66, 129, 37, 0.9);
 }
 .profile-img .file {
     position: relative;
@@ -192,7 +181,7 @@ export default {
     color: #333;
 }
 .profile-head h6{
-    color: #0062cc;
+    color: white;
 }
 .profile-edit-btn{
     border: none;
@@ -223,7 +212,7 @@ export default {
 }
 .profile-head .nav-tabs .nav-link.active{
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom:2px solid white;
 }
 .profile-work{
     padding: 14%;
@@ -249,6 +238,6 @@ export default {
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: white;
 }
 </style>

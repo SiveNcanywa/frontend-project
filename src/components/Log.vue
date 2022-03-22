@@ -91,7 +91,7 @@ export default {
     login() {
       console.log("we made it");
       fetch("https://sive-ticketing.herokuapp.com/user/signin", {
-        method: "PATCH",
+        method: "POST",
         // mode: "no-cors",
         body: JSON.stringify({
           username: this.username,
@@ -106,6 +106,11 @@ export default {
           console.log(json);
           alert("User logged in");
           localStorage.setItem("jwt", json.jwt);
+          localStorage.setItem("id",user.id);
+          localStorage.setItem("username",user.username);
+          localStorage.setItem("email",user.email);
+          localStorage.setItem("phone_number",user.phone_number);
+          localStorage.setItem("password",user.password);
           this.$router.push({ name: "products" });
         })
         .catch((err) => {
