@@ -4,7 +4,7 @@ import log from '../components/Log.vue'
 import about from '../components/about.vue'
 import contact from '../components/contact.vue'
 import products from '../components/products.vue'
-
+import profile from '../components/profile.vue'
 const routes = [
   {
     path: '/',
@@ -30,6 +30,11 @@ const routes = [
     path: '/products',
     name: 'products',
     component: ()=>import('../components/products.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ()=>import('../components/profile.vue')
   }
 ]
 
