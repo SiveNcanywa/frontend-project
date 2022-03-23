@@ -22,7 +22,7 @@
         >Sign Up</label
       >
       <div class="login-form">
-        <form @submit="login" class="sign-in-htm">
+        <form @submit.prevent="login" class="sign-in-htm">
           <div class="group">
             <label class="label">Username</label>
             <input type="text" class="input" v-model="username" />
@@ -33,8 +33,9 @@
           </div>
 
           <div class="group">
-            <input type="submit" class="button" />
+            <!-- <input type="submit" class="button" /> -->
           </div>
+          <button type="submit">Sign In</button>
           <div class="hr"></div>
           <div class="foot-lnk">
             <label for="tab-2">Dont have an account?</label>
@@ -68,6 +69,20 @@
         </form>
       </div>
     </div>
+    <div v-show="loading" class="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -79,10 +94,12 @@ export default {
       email: "",
       phone_number: "",
       password: "",
+      loading: false,
     };
   },
   methods: {
     login() {
+      this.loading = true;
       const details = {
         username: this.username,
         password: this.password,
@@ -102,21 +119,21 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           console.log(json);
+          this.loading = false;
           alert("User logged in");
           localStorage.setItem("jwt", json.jwt);
-          localStorage.setItem("id", user.id);
-          localStorage.setItem("username", user.username);
-          localStorage.setItem("email", user.email);
-          localStorage.setItem("phone_number", user.phone_number);
-          localStorage.setItem("password", user.password);
+          // localStorage.setItem("id", user.id);
+          // localStorage.setItem("username", user.username);
+          // localStorage.setItem("email", user.email);
+          // localStorage.setItem("phone_number", user.phone_number);
+          // localStorage.setItem("password", user.password);
           this.$router.push({ name: "products" });
         })
         .catch((err) => {
+          this.loading = false;
           alert(err);
         });
     },
-  },
-  methods: {
     register() {
       console.log(this.password);
       let newUser = {

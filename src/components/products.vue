@@ -6,9 +6,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Tickets</a>
         </li>
-            <li class="nav-item">
-           <a class="nav-link"  href="#profile">Profile</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#profile">Profile</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>
         </li>
@@ -38,14 +38,12 @@
           id="calculate-fare-zone"
           required="required"
           aria-required="true"
-          v-model="depature"
+          v-model="departure"
           @change="priceCalculator"
         >
           <option value="Atlantis">Atlantis</option>
-          <option value="Bellvile">Bellvile</option>
           <option value="Blue Downs">Blue Downs</option>
-          <option value="Brankenfell">Brakenfell</option>
-          <option value="Cape Town">Cape Town</option>
+         
         </select>
       </div>
       <!-- Q2 -->
@@ -63,10 +61,8 @@
           @change="priceCalculator"
         >
           <option value="Cape Town">Cape Town</option>
-          <option value="Tygervalley">Tygervalley</option>
-          <option value="Claremont">Claremont</option>
-          <option value="Wynberg">Wynberg</option>
-          <option value="Kuilsriver">Kuilsriver</option>
+          <option value="Tygervalley">Bellvile</option>
+          
         </select>
       </div>
       <!-- Q3 -->
@@ -78,14 +74,14 @@
               class="calculate-fare-field"
               type="radio"
               name="purchase_location"
-              value="advance_purchase"
+              value="monthly"
               id="calculate-fare-advance"
               checked="checked"
               required="required"
               aria-describedby="calculate-fare-purchase-info"
               aria-required="true"
               v-model="duration"
-              @change="priceCalculator"
+              @input="priceCalculator"
             />
             <label for="calculate-fare-advance">Monthly</label>
           </p>
@@ -94,7 +90,7 @@
               class="calculate-fare-field"
               type="radio"
               name="purchase_location"
-              value="onboard_purchase"
+              value="weekly"
               id="calculate-fare-onboard"
               required="required"
               aria-describedby="calculate-fare-purchase-info"
@@ -116,7 +112,7 @@
     <footer class="calculate-fare-footer">
       <p class="calculate-fare-text--total">
         Your ticket will cost
-        <span id="calculate-fare-total">R0</span>
+        <span id="calculate-fare-total">R{{ total }}.00</span>
       </p>
       <!-- Button trigger modal -->
       <button
@@ -227,14 +223,37 @@ export default {
       departure: null,
       arrival: null,
       duration: null,
+      total: 0,
     };
   },
   methods: {
     priceCalculator() {
       if (this.departure && this.arrival && this.duration) {
-        console.log(this.departure);
-        console.log(this.arrival);
-        console.log(this.duration);
+        if (
+          this.departure === "Atlantis" &&
+          this.arrival === "Cape Town" &&
+          this.duration === "weekly"
+        ) {
+          this.total = 250;
+        };
+        if(this.departure==="Blue Downs"&&
+          this.arrival==="Cape Town"&&
+          this.duration ==="weekly"
+          ){
+            this.total=300;
+          };
+          if(this.departure==="Atlantis"&&
+          this.arrival==="Bellvile"&&
+          this.duration ==="weekly"
+          ){
+            this.total=150;
+          };
+          if(this.departure==="Blue Downs"&&
+          this.arrival==="Bellvile"&&
+          this.duration ==="weekly"
+          ){
+            this.total=270;
+          }
       }
     },
     pay() {},
@@ -287,7 +306,7 @@ p {
   transform: translate(15px);
   transition: transform 0.2s ease-in;
 }
-.btn.btn{
+.btn.btn {
   background-color: #fa8c26;
 }
 
