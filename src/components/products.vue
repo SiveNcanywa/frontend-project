@@ -121,7 +121,7 @@
       <!-- Button trigger modal -->
       <button
         type="button"
-        class="btn btn-primary"
+        class="btn btn"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
       >
@@ -286,6 +286,9 @@ p {
 .btn.btn-primary:hover .fas.fa-arrow-right {
   transform: translate(15px);
   transition: transform 0.2s ease-in;
+}
+.btn.btn{
+  background-color: #fa8c26;
 }
 
 .form-control {

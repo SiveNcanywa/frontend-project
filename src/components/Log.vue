@@ -22,7 +22,7 @@
         >Sign Up</label
       >
       <div class="login-form">
-        <form @submit.prevent="login" class="sign-in-htm">
+        <form @submit="login" class="sign-in-htm">
           <div class="group">
             <label class="label">Username</label>
             <input type="text" class="input" v-model="username" />
@@ -43,20 +43,20 @@
         <form @submit.prevent="register" class="sign-up-htm">
           <div class="group">
             <label class="label">Username</label>
-            <input type="text" class="input" v-model="username"  required/>
+            <input type="text" class="input" v-model="username" required />
           </div>
           <div class="group">
             <label class="label">Password</label>
-            <input type="password" class="input" v-model="password" required/>
+            <input type="password" class="input" v-model="password" required />
           </div>
           <div class="group">
             <label class="label">Phone Number</label>
-            <input type="text" class="input" v-model="phone_number" required/>
+            <input type="text" class="input" v-model="phone_number" required />
           </div>
 
           <div class="group">
             <label class="label">Email Address</label>
-            <input type="text" class="input" v-model="email" required/>
+            <input type="text" class="input" v-model="email" required />
           </div>
           <div class="group">
             <input type="submit" class="button" />
@@ -74,24 +74,22 @@
 <script>
 export default {
   data() {
-    return (
-      {
-        username: "",
-        password: "",
-      },
-      {
-        username: "",
-        email: "",
-        phone_number: "",
-        password: "",
-      }
-    );
+    return {
+      username: "",
+      email: "",
+      phone_number: "",
+      password: "",
+    };
   },
   methods: {
     login() {
-      console.log("we made it");
+      const details = {
+        username: this.username,
+        password: this.password,
+      };
+      console.log("details");
       fetch("https://sive-ticketing.herokuapp.com/user/signin", {
-        method: "POST",
+        method: "PATCH",
         // mode: "no-cors",
         body: JSON.stringify({
           username: this.username,
@@ -106,11 +104,11 @@ export default {
           console.log(json);
           alert("User logged in");
           localStorage.setItem("jwt", json.jwt);
-          localStorage.setItem("id",user.id);
-          localStorage.setItem("username",user.username);
-          localStorage.setItem("email",user.email);
-          localStorage.setItem("phone_number",user.phone_number);
-          localStorage.setItem("password",user.password);
+          localStorage.setItem("id", user.id);
+          localStorage.setItem("username", user.username);
+          localStorage.setItem("email", user.email);
+          localStorage.setItem("phone_number", user.phone_number);
+          localStorage.setItem("password", user.password);
           this.$router.push({ name: "products" });
         })
         .catch((err) => {
