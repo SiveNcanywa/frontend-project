@@ -95,6 +95,7 @@ Founded in 1861, and owned by South African holding company Hosken Consolidated 
     </tr>
     </table>
 </div>
+ 
 </template>
 
 <script>
@@ -102,6 +103,10 @@ export default {};
 </script>
 
 <style>
+ #sticky-footer{
+      height: 20px;
+    }
+    
 
   .show_mobile{
     display: none;
@@ -122,7 +127,7 @@ export default {};
     #tb_mobile{
       border: 0px solid #ddd;
     }
-    
+   
   }
 
 

@@ -81,7 +81,7 @@
               aria-describedby="calculate-fare-purchase-info"
               aria-required="true"
               v-model="duration"
-              @input="priceCalculator"
+              @change="priceCalculator"
             />
             <label for="calculate-fare-advance">Monthly</label>
           </p>
@@ -235,7 +235,7 @@ export default {
           this.duration === "weekly"
         ) {
           this.total = 250;
-        };
+        }
         if(this.departure==="Blue Downs"&&
           this.arrival==="Cape Town"&&
           this.duration ==="weekly"
@@ -247,12 +247,37 @@ export default {
           this.duration ==="weekly"
           ){
             this.total=150;
-          };
+          }
           if(this.departure==="Blue Downs"&&
           this.arrival==="Bellvile"&&
           this.duration ==="weekly"
           ){
             this.total=270;
+          }
+           if (
+          this.departure === "Atlantis" &&
+          this.arrival === "Cape Town" &&
+          this.duration === "monthly"
+        ) {
+          this.total = 670;
+        };
+        if(this.departure==="Blue Downs"&&
+          this.arrival==="Cape Town"&&
+          this.duration ==="monthly"
+          ){
+            this.total=1250;
+          };
+          if(this.departure==="Atlantis"&&
+          this.arrival==="Bellvile"&&
+          this.duration ==="monthly"
+          ){
+            this.total=950;
+          };
+          if(this.departure==="Blue Downs"&&
+          this.arrival==="Bellvile"&&
+          this.duration ==="monthly"
+          ){
+            this.total=1000;
           }
       }
     },
@@ -358,7 +383,7 @@ body:not(:-moz-handler-blocked) fieldset {
   border: 2px solid #cccccc;
   color: #595959;
   font-family: "Open Sans", sans-serif;
-  margin: 0 auto;
+  margin: 35px auto;
   max-width: 640px;
   text-align: center;
   width: 100%;

@@ -117,16 +117,16 @@ export default {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
+        .then((user) => {
+          console.log(user);
           this.loading = false;
           alert("User logged in");
-          localStorage.setItem("jwt", json.jwt);
-          // localStorage.setItem("id", user.id);
-          // localStorage.setItem("username", user.username);
-          // localStorage.setItem("email", user.email);
-          // localStorage.setItem("phone_number", user.phone_number);
-          // localStorage.setItem("password", user.password);
+          localStorage.setItem("jwt", user.jwt);
+          localStorage.setItem("id",user.id);
+          localStorage.setItem("username", user.username);
+          localStorage.setItem("email", user.email);
+          localStorage.setItem("phone_number", user.phone_number);
+          localStorage.setItem("password", user.password);
           this.$router.push({ name: "products" });
         })
         .catch((err) => {
@@ -152,10 +152,10 @@ export default {
         },
       })
         .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
+        .then((user) => {
+          console.log(user);
           alert("User registered");
-          localStorage.setItem("jwt", json.jwt);
+          localStorage.setItem("jwt", user.jwt);
           this.$router.push({ name: "products" });
         })
         .catch((err) => {
