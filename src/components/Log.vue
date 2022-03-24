@@ -33,9 +33,9 @@
           </div>
 
           <div class="group">
-            <!-- <input type="submit" class="button" /> -->
+            <input type="submit" class="button" />
           </div>
-          <button type="submit">Sign In</button>
+       
           <div class="hr"></div>
           <div class="foot-lnk">
             <label for="tab-2">Dont have an account?</label>
