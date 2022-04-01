@@ -239,6 +239,7 @@ export default {
   },
   methods: {
     priceCalculator() {
+      console.log(this.departure,this.arrival,this.duration,this.total)
       if (this.departure && this.arrival && this.duration) {
         if (
           this.departure === "Atlantis" &&
@@ -293,6 +294,7 @@ export default {
       }
     },
     handlePayment(){
+      console.log(this.ccv,this.card_number,this.email,this.expiry)
       fetch("https://sive-ticketing.herokuapp.com/payment", {
         method: "POST",
         mode:'no-cors',
@@ -301,6 +303,7 @@ export default {
           cvv: this.cvv,
           email: this.email,
           expiry: this.expiry,
+
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
