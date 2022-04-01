@@ -21,16 +21,13 @@
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        {{name}}
+                                        {{username}}
                                     </h5>
                                     <h6>
                                         Passenger
@@ -44,8 +41,10 @@
                             </ul>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-danger btn-lg">Delete Account</button>
                     <div class="col-md-2">
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+                        
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -100,14 +99,9 @@
                                                 <p>{{email}}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone_number</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{phone_number}}</p>
-                                            </div>
-                                        </div>
+                                       
+                                           
+                                       
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Password</label>
@@ -133,11 +127,7 @@ data(){
         username:localStorage.getItem("username"),
         email:localStorage.getItem("email"),
         phone_number:localStorage.getItem("phone_number"),
-        password:localStorage.getItem("password")
-        
-        
-
-        
+        password:localStorage.getItem("password")  
     }
 },
 }

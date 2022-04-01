@@ -61,7 +61,7 @@
           @change="priceCalculator"
         >
           <option value="Cape Town">Cape Town</option>
-          <option value="Tygervalley">Bellvile</option>
+          <option value="Bellvile">Bellvile</option>
           
         </select>
       </div>
@@ -148,18 +148,20 @@
               ></button>
             </div>
             <div class="modal-body">
+              <form @submit.prevent="handlePayment()">
               <div class="container p-0">
                 <div class="card px-4">
                   <p class="h8 py-3">Payment Details</p>
                   <div class="row gx-3">
                     <div class="col-12">
                       <div class="d-flex flex-column">
-                        <p class="text mb-1">Person Name</p>
+                        <p class="text mb-1" >Email address</p>
                         <input
                           class="form-control mb-3"
                           type="text"
-                          placeholder="Name"
-                          value="Barry Allen"
+                          v-model="email"
+                          placeholder="enter a valid email for proof of purchase"
+                          
                         />
                       </div>
                     </div>
@@ -168,8 +170,9 @@
                         <p class="text mb-1">Card Number</p>
                         <input
                           class="form-control mb-3"
-                          type="text"
+                          type="number"
                           placeholder="1234 5678 435678"
+                          v-model="card_number"
                         />
                       </div>
                     </div>
@@ -178,8 +181,9 @@
                         <p class="text mb-1">Expiry</p>
                         <input
                           class="form-control mb-3"
-                          type="text"
+                          type="expiry"
                           placeholder="MM/YYYY"
+                          v-model="expiry"
                         />
                       </div>
                     </div>
@@ -188,14 +192,16 @@
                         <p class="text mb-1">CVV/CVC</p>
                         <input
                           class="form-control mb-3 pt-2"
-                          type="password"
+                          type="ccv"
                           placeholder="***"
+                          v-model="cvv"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              </form>
             </div>
             <div class="modal-footer">
               <button
@@ -205,7 +211,7 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" @click="pay">
+              <button type="submit" class="btn btn-primary">
                 Pay
               </button>
             </div>
@@ -224,6 +230,11 @@ export default {
       arrival: null,
       duration: null,
       total: 0,
+      ccv:null,
+      expiry:null,
+      card_number:null,
+      email:null,
+
     };
   },
   methods: {
@@ -241,15 +252,15 @@ export default {
           this.duration ==="weekly"
           ){
             this.total=300;
-          };
-          if(this.departure==="Atlantis"&&
-          this.arrival==="Bellvile"&&
+          }
+          if(this.departure ==="Atlantis" &&
+          this.arrival ==="Bellvile" &&
           this.duration ==="weekly"
           ){
             this.total=150;
           }
-          if(this.departure==="Blue Downs"&&
-          this.arrival==="Bellvile"&&
+          if(this.departure ==="Blue Downs" &&
+          this.arrival ==="Bellvile" &&
           this.duration ==="weekly"
           ){
             this.total=270;
@@ -260,30 +271,49 @@ export default {
           this.duration === "monthly"
         ) {
           this.total = 670;
-        };
-        if(this.departure==="Blue Downs"&&
-          this.arrival==="Cape Town"&&
+        }
+        if(this.departure ==="Blue Downs"&&
+          this.arrival ==="Cape Town"&&
           this.duration ==="monthly"
           ){
             this.total=1250;
-          };
-          if(this.departure==="Atlantis"&&
-          this.arrival==="Bellvile"&&
+          }
+          if(this.departure ==="Atlantis" &&
+          this.arrival ==="Bellvile" &&
           this.duration ==="monthly"
           ){
             this.total=950;
-          };
-          if(this.departure==="Blue Downs"&&
-          this.arrival==="Bellvile"&&
+          }
+          if(this.departure === "Blue Downs" &&
+          this.arrival === "Bellvile" &&
           this.duration ==="monthly"
           ){
             this.total=1000;
           }
       }
     },
-    pay() {},
+    handlePayment(){
+      fetch("https://sive-ticketing.herokuapp.com/payment", {
+        method: "POST",
+        mode:'no-cors',
+        body: JSON.stringify({
+          card_number: this.card_number,
+          cvv: this.cvv,
+          email: this.email,
+          expiry: this.expiry,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+       .then((response) => response.json())
+       .then((json) => alert(json.msg))
+      .catch((err) => alert(err.msg));
+    },
+    
   },
-};
+  };
+
 </script>
 
 <style scoped>
@@ -342,6 +372,9 @@ p {
   height: 60px;
   padding-left: 20px;
   vertical-align: middle;
+}
+.form-control placeholder{
+  color:white;
 }
 
 .form-control:focus {

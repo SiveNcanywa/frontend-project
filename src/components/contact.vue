@@ -16,7 +16,7 @@
     </div>
   </nav>
 
-  <form action="mail.php" @submit.prevent="handleSubmit" class="container">
+  <form @submit.prevent="handleSubmit()" class="container">
     <h2>Contact Us</h2>
     <div class="row100">
       <div class="col">
@@ -90,10 +90,9 @@
         </div>
       </div>
     </div>
-
     <div class="row100">
       <div class="col">
-        <input type="submit" value="Send" />
+        <button type="submit" class="btn btn-dark">Send</button>
       </div>
     </div>
   </form>
@@ -101,41 +100,40 @@
 
 <script>
 export default {
- data() {
+  data() {
     return {
       firstname: "",
       email: "",
       lastname: "",
-      phone_number:"",
+      phone_number: "",
       message: "",
     };
   },
   methods: {
     handleSubmit() {
-    //   console.log(this.firstname, this.email, this.lastname,this.phone_number, this.message);
-      let contact = {
-        firstname: this.firstname,
-        message: this.message,
-        email: this.email,
-        lastname: this.lastname,
-        phone_number:this.phone_number,
-      };
-      console.log(contact);
+      console.log(this.firstname,this.message,this.lastname,this.message,this.phone_number)
       fetch("https://sive-ticketing.herokuapp.com/contact", {
         method: "POST",
-        //   mode: 'no-cors',
-        body: JSON.stringify(contact),
-
+        mode:'no-cors',
+        body: JSON.stringify({
+          firstname: this.firstname,
+          message: this.message,
+          email: this.email,
+          lastname: this.lastname,
+          phone_number: this.phone_number,
+        }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((response) => response.json())
-        .then((json) => alert(json.msg))
-        .catch((error) => alert(error.msg));
+       .then((response) => response.json())
+       .then((json) => {
+         console.log(json)
+         alert(json.msg)})
+      .catch((err) => alert(err.msg));
     },
+    
   },
-
 };
 </script>
 
