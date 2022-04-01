@@ -115,7 +115,7 @@ export default {
       console.log(this.firstname,this.message,this.lastname,this.message,this.phone_number)
       fetch("https://sive-ticketing.herokuapp.com/contact", {
         method: "POST",
-        mode:'no-cors',
+        // mode:'no-cors',
         body: JSON.stringify({
           firstname: this.firstname,
           message: this.message,
