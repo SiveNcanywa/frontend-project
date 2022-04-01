@@ -103,10 +103,11 @@ export default {
   data() {
     return {
       firstname: "",
-      email: "",
-      lastname: "",
-      phone_number: "",
-      message: "",
+       lastname: "",
+         message: "",
+          email: "",
+          phone_number: "",
+    
     };
   },
   methods: {
